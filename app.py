@@ -9,7 +9,7 @@ r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 @app.route('/')
 def home():
     count = r.incr('hits')
-    return f"Total visits: {count}"
+    return f"CI/CD Working 🚀 Visits: {count}"
 
 @app.route('/reset')
 def reset():
