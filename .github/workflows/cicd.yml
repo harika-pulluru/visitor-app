@@ -26,16 +26,16 @@ jobs:
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/visitor-app:latest
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
+#    - name: Configure AWS Credentials
+#      uses: aws-actions/configure-aws-credentials@v4
+#      with:
+#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#        aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Force ECS Deployment
-      run: |
-        aws ecs update-service \
-          --cluster visitor-cluster \
-          --service visitor-service \
-          --force-new-deployment
+#    - name: Force ECS Deployment
+#      run: |
+#        aws ecs update-service \
+#          --cluster visitor-cluster \
+#          --service visitor-service \
+#          --force-new-deployment
