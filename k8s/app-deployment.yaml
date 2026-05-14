@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitor-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: visitor-app
+  template:
+    metadata:
+      labels:
+        app: visitor-app
+      
+    spec:
+      containers:
+      - name: visitor-app
+        image: harika445/visitor-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: visitor-config
+              key: REDIS_HOST

@@ -3,13 +3,13 @@ import redis
 import os
 
 app = Flask(__name__)
-redis_host = os.getenv('REDIS_HOST', 'localhost')
+redis_host = os.getenv('REDIS_HOST', 'redis-service')
 r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 
 @app.route('/')
 def home():
     count = r.incr('hits')
-    return f"CI/CD Working 🚀 Visits: {count}"
+    return f"Kubernetes CI/CD 🚀 Visits: {count}"
 
 @app.route('/reset')
 def reset():
